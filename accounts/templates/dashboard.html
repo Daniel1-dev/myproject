@@ -1,0 +1,38 @@
+{% load static %}
+
+<link rel="stylesheet"
+href="{% static 'css/style.css' %}">
+
+<div class="dashboard">
+
+<h2>
+Welcome {{user.username}}
+</h2>
+
+<a href="/profile/">
+Edit Profile
+</a>
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit">
+Add Note
+</button>
+
+</form>
+
+<hr>
+
+{% for note in notes %}
+
+<h3>{{note.title}}</h3>
+
+<p>{{note.content}}</p>
+
+{% endfor %}
+
+</div>
